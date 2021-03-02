@@ -1,0 +1,182 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand {
+    white-space: normal;
+    text-align: center;
+    word-break: break-all;
+}
+
+/* Provide sufficient contrast against white background */
+a {
+  color: #0366d6;
+}
+
+.btn-primary {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  /* Margin bottom by footer height */
+  /*margin-bottom: 60px;*/
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+h1 {
+    color:#fff;important!
+}
+
+.menuIcon {
+    margin-right: 5px;
+    margin-left: 18px;
+    color: #fff;
+}
+
+.transprantBackground {
+    /*background: #eee;*/
+    background: linear-gradient(180deg, #def 0%, #fff 100%);
+    opacity: 0.75;
+    border-radius: 8px;
+    padding: 8px;
+    padding-top:9px;
+    margin-right: 8px;
+}
+
+h1 {
+    color: #fff;
+}
+
+.MenuClass_default, .MenuClass_default_hover, .MenuClass_active_hover, .MenuClass_active_default {
+    font-family: Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    color: #202124;
+    user-select: none;
+    white-space: nowrap;
+    line-height: 20px;
+    background: rgba(0,0,0,0.702);
+    border-radius: 0 13px 13px 0;
+    box-sizing: border-box;
+    width: 100%;
+    transition: border-radius .15s cubic-bezier(0.4,0.0,0.2,1),margin .15s cubic-bezier(0.4,0.0,0.2,1),width .15s cubic-bezier(0.4,0.0,0.2,1);
+    box-shadow: inset 0 0 0 1px transparent;
+    font-family: 微软雅黑,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: .2px;
+    text-shadow: 0 1px 2px rgba(0,0,0,.65);
+    color: #fff;
+    font-size: 12pt;
+    height: 38px;
+    padding: 6px;
+    padding-top:8px;
+    width: 100%;
+}
+
+.MenuClass_default {
+    background-color: transparent;
+}
+
+.MenuClass_default_hover {
+    /*background-color: rgba(255,255,255,0.30);*/
+    background-color: red;
+}
+.MenuClass_active_default {
+    background-color: rgba(0,0,0,0.702);
+}
+
+.MenuClass_active_hover {
+    background-color: red;
+}
+
+.navMenuItem_Title {
+    user-select: none;
+    line-height: 20px;
+    white-space: nowrap;
+    -webkit-user-drag: none;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: bold;
+    -webkit-font-smoothing: antialiased;
+    font-family: 微软雅黑,Roboto,RobotoDraft,Helvetica,Arial,sans-serif;
+    letter-spacing: .2px;
+    text-shadow: 0 1px 2px rgba(0,0,0,.65);
+    color: #fff;
+    font-size: 11pt;
+}
+
+.text-shadow {
+    text-shadow: 0 1px 2px rgba(0,0,0,.65);
+}
+.text-eee {
+    color:#eee;
+}
+.text-ddd {
+    color:#ddd;
+}
+.text-ccc {
+    color:#ccc;
+}
+.breadcrumb {
+    /*font-size: 13pt;*/
+    /*margin-top:8px;*/
+    /*margin-right:8px;*/
+    opacity: 0.75;
+    margin-bottom: 8px;
+    font-weight:bold;
+    font-size:1.3rem;
+}
+h1 {
+    text-shadow: 0 1px 2px rgba(0,0,0,.65);
+}
+.main_nav {
+    margin-top:11px;
+    margin-right:99px;
+}
+.page_title {
+    font-size: 1.5rem;
+}

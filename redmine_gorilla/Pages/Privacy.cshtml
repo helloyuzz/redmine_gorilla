@@ -1,0 +1,29 @@
+﻿@page
+@model com.redmine.gorilla.Pages.PrivacyModel
+@{
+    ViewData["Title"] = "关于蓝鹰追溯CSSD在线协作管理系统 v0.1";
+}
+@*<p>Use this page to detail your site's privacy policy.</p>*@
+<div class="transprantBackground">
+    <p class="page_title">@ViewData["Title"]</p>
+    <div class="row">
+        <div class="col">
+            <p>
+                @*<b>功能说明</b>：<br />*@本系统主要实现：
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item">1.用户、项目和组织结构管理</li>
+                                <li class="list-group-item">2.订阅管理</li>
+                                <li class="list-group-item">3.微信推送管理（内网用户）</li>
+                                <li class="list-group-item">4.项目授权 / Licence / 项目进度管理</li>
+                                <li class="list-group-item">5.内部员工帐号管理</li>
+                                <li class="list-group-item">6.销售、产品、实施、研发、运维多部门之间，工作流程协作管理</li>
+                            </ul>
+            </p>
+            <p><b>技术架构</b>：<br />Ruby、ASP.NET CORE </p>
+            <p><b>数据库</b>：<br />Mysql</p>
+            <p><b>版本号</b>：<br />0.1</p>
+            <p><b>版权所有</b>：<br />&copy;&nbsp;四川劳吉克信息技术有限公司</p>
+            <a class="btn btn-warning" asp-area="" onclick="window.history.go(-1); return false;">OK</a>
+        </div>
+    </div>
+</div>
