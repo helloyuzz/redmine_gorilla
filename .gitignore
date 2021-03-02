@@ -11,6 +11,7 @@
 /tmp/
 /redmine-net-api-4.2.2
 db_gorilla.sql
+.svn
 
 # Used by dotenv library to load environment variables.
 # .env
