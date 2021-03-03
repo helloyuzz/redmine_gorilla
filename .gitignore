@@ -11,7 +11,8 @@
 /tmp/
 /redmine-net-api-4.2.2
 db_gorilla.sql
-.svn
+.svn/
+.vs/
 
 # Used by dotenv library to load environment variables.
 # .env
@@ -57,3 +58,7 @@ build-iPhoneSimulator/
 
 # Used by RuboCop. Remote config files pulled in from inherit_from directive.
 # .rubocop-https?--*
+.svn/wc.db
+.vs/
+redmine_gorilla/bin
+redmine_gorilla/obj
