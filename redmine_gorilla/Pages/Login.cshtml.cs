@@ -19,6 +19,7 @@ namespace com.redmine.gorilla.Pages {
   
 
         public IActionResult OnGet() {
+            return RedirectToPage("/Progresses/Index");
             ModelState.Clear();
             string temp = Request.Query["errcode"];//.ContainsKey("errcode");
             try {

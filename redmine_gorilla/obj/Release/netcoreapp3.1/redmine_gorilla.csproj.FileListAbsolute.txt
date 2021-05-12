@@ -465,3 +465,5 @@ D:\GitHub\redmine_gorilla\redmine_gorilla\obj\Release\netcoreapp3.1\com.redmine.
 D:\GitHub\redmine_gorilla\redmine_gorilla\obj\Release\netcoreapp3.1\redmine_gorilla.genruntimeconfig.cache
 D:\GitHub\redmine_gorilla\redmine_gorilla\obj\Release\netcoreapp3.1\Razor\Pages\HidePanel.cshtml.g.cs
 D:\GitHub\redmine_gorilla\redmine_gorilla\obj\Release\netcoreapp3.1\Razor\Pages\Progresses\Index.cshtml.g.cs
+D:\GitHub\redmine_gorilla\redmine_gorilla\obj\Release\netcoreapp3.1\Razor\Pages\DirectoryViews\Index.cshtml.g.cs
+D:\GitHub\redmine_gorilla\redmine_gorilla\obj\Release\netcoreapp3.1\Razor\Pages\Open.cshtml.g.cs

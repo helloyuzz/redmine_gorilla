@@ -1,0 +1,26 @@
+﻿@page
+@model DirectoryInfo.Pages.IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="text-center">
+    <div class="transprantBackground" style="padding:8px;">
+        @*<h1 class="display-4">Welcome</h1>*@
+        <table class="table table-hover">
+            <tr>
+                <td align="left">@Html.DisplayNameFor(model => model.AllFiles[0].FileName)</td>
+                @*<td>@Html.DisplayNameFor(model=>model.AllFiles[0].FilePath)</td>*@
+            </tr>
+            @{
+                foreach (var item in Model.AllFiles) {
+                    <tr>
+                        <td align="left"><a target="_blank" href="http://server.logichealth.cn:9001/prototype/@Html.Raw(item.FileName)">@Html.DisplayFor(modelItem => item.FileName)</a></td>
+                        @*<td>@Html.DisplayFor(modelItem => item.FilePath)</td>*@
+                    </tr>
+                }
+            }
+        </table>
+        @*<p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@
+    </div>
+</div>

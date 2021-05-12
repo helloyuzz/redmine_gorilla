@@ -1,6 +1,9 @@
 ﻿using com.redmine.gorilla.Models;
+using Redmine.Net.Api;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
+using System.Globalization;
 
 namespace com.redmine.gorilla {
     public class Globals {
@@ -106,6 +109,9 @@ namespace com.redmine.gorilla {
         static string _VersionURL = "";
         static string _UserURL = "";
         static string _NewIssusURL = "";
+        static string _PrototypeURL = "";
+        static string _PrototypePath = "";
+        static string _APIKey = "";
         public static string RedmineURL {
             get {
                 if (string.IsNullOrEmpty(_RedmineURL)) {
@@ -113,7 +119,31 @@ namespace com.redmine.gorilla {
                 }
                 return _RedmineURL;
             }
-        }        
+        }
+        public static string PrototypePath {
+            get {
+                if (string.IsNullOrEmpty(_PrototypePath)) {
+                    _PrototypePath = AppConfigurtaionServices.Configuration["URLDefintion:PrototypePath"];
+                }
+                return _PrototypePath;
+            }
+        }
+        public static string PrototypeURL {
+            get {
+                if (string.IsNullOrEmpty(_PrototypeURL)) {
+                    _PrototypeURL = AppConfigurtaionServices.Configuration["URLDefintion:PrototypeURL"];
+                }
+                return _PrototypeURL;
+            }
+        }
+        public static string APIKey {
+            get {
+                if (string.IsNullOrEmpty(_APIKey)) {
+                    _APIKey = AppConfigurtaionServices.Configuration["APIKey"];
+                }
+                return _APIKey;
+            }
+        }
         public static string GorillaURL {
             get {
                 if (string.IsNullOrEmpty(_GorillaURL)) {
@@ -146,7 +176,22 @@ namespace com.redmine.gorilla {
                 return _UserURL;
             }
         }
-        public static List<User> AllUser { get; set; } = new List<User>();
+        static List<User> _all_user = null;
+        public static List<User> AllUser {
+            get {
+                if (_all_user == null) {
+                    _all_user = new List<User>();
+
+                    RedmineManager manager = new RedmineManager(Globals.RedmineURL, Globals.APIKey);
+                    var getAllUser = manager.GetObjects<Redmine.Net.Api.Types.User>(new NameValueCollection(){
+                        {RedmineKeys.STATUS, ((int)Redmine.Net.Api.Types.UserStatus.StatusActive).ToString(CultureInfo.InvariantCulture)},{ RedmineKeys.INCLUDE, RedmineKeys.RELATIONS }
+                    });
+                    GorillaUtil.Resort(getAllUser);
+                }
+
+                return _all_user;
+            }
+        }
         public static List<Project> AllProject { get; set; } = new List<Project>();
         public static List<UserSkin> SkinValues { get; set; } = new List<UserSkin>();
     }

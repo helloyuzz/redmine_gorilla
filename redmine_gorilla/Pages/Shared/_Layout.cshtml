@@ -61,6 +61,7 @@
         cua = new User();
         cua.Theme_url = "/images/9.jpg";
     }
+    isLogoned=true;
 }
 <head>
     <meta charset="utf-8" />
@@ -89,23 +90,22 @@
                     <i class="fa fa-home text-dark"></i>
                 </a>
             </div>*@
-        <div class="dropdown" style="position:absolute;top:13px;right:26px;z-index:138;">
+        <div class="dropdown" style="position:absolute;top:16px;right:13px;z-index:138;">
             <a class="btn btn-success dropdown-toggle text-white text-shadow" id="dropdownMenu1"
-               data-toggle="dropdown" title="菜单">
-                @cua.User_account
+               data-toggle="dropdown" title="菜单">菜单
             </a>
             <ul class="dropdown-menu pull-right" role="menu"
                 aria-labelledby="dropdownMenu1">
                 <li role="presentation" class="dropdown-header text-danger"> <i class="fa fa-search" aria-hidden="true"></i>&nbsp;快捷导航</li>
                 <li role="presentation">
-                    <a href="@com.redmine.gorilla.Globals.GorillaURL" target="_blank" role="menuitem" tabindex="-1">转到 Redmine</a>
+                    <a href="@com.redmine.gorilla.Globals.GorillaURL" role="menuitem" tabindex="-1">返回 Redmine</a>
                 </li>
-                <li role="presentation">
+                @*<li role="presentation">
                     <a asp-area="" asp-page="/Index" role="menuitem" tabindex="-1">转到 主页</a>
-                </li>
+                </li>*@
                 <li role="presentation" class="dropdown-header text-primary"> <i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;进度</li>
                 <li role="presentation">
-                    <a asp-area="" asp-page="/Provinces/Index" role="menuitem" tabindex="-1">当前进度查询</a>
+                    <a asp-area="" asp-page="/Progresses/Index" role="menuitem" tabindex="-1">版本计划</a>
                 </li>
                 @*<li role="presentation" class="divider"></li>*@
             <li role="presentation" class="dropdown-header text-primary"><i class="fa fa-user-edit" aria-hidden="true"></i>&nbsp;数据</li>
@@ -115,16 +115,16 @@
                 <li role="presentation">
                     <a asp-area="" asp-page="/Users/Index" role="menuitem" tabindex="-1">员工列表</a>
                 </li>
-                <li role="presentation">
+                @*<li role="presentation">
                     <a asp-area="" asp-page="/Accounts/Index" role="menuitem" tabindex="-1">提取升级包</a>
-                </li>
+                </li>*@
                 <li role="presentation" class="dropdown-header text-primary"> <i class="fa fa-wrench" aria-hidden="true"></i>&nbsp;设置</li>
                 <li role="presentation">
                     <a asp-area="" asp-page="/Accounts/Index" role="menuitem" tabindex="-1">日志审计</a>
                 </li>
-                <li role="presentation">
+                @*<li role="presentation">
                     <a asp-area="" asp-page="/Logout" role="menuitem" tabindex="-1">注销</a>
-                </li>
+                </li>*@
             </ul>
         </div>
     }
@@ -184,7 +184,7 @@
                         if (isIndexPage == "false") {
                             <nav aria-label="breadcrumb" class="main_nav">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="/Index"><i class="fa fa-location-arrow"></i>&nbsp;产品协作管理平台</a></li>
+                                    <li class="breadcrumb-item"><a href="http://server.logichealth.cn:9000/projects/gorilla"><i class="fa fa-location-arrow"></i>&nbsp;Redmine产品协作管理平台</a></li>
                                      @*ViewData["CrumbList"] as IList<CrumbItem>*@
                                     @{ foreach (var item in Model._CrumbList) {
                                             @Html.Raw(item.HtmlContent);

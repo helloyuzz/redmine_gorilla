@@ -30,5 +30,7 @@ namespace com.redmine.gorilla.Models {
         [Display(Name = "Release地址")]
         public string ReleasePath { get; set; }
         public string Name1 { get; set; }
+        [Display(Name ="版本描述")]
+        public string Desc { get; set; }
     }
 }

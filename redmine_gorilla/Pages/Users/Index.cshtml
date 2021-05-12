@@ -5,88 +5,96 @@
 @{
     ViewData["Title"] = "Index";
 }
-
+<style>
+    .main_div {
+        height: 600px;
+        overflow-y: scroll;
+        overflow-x:hidden;
+    }
+</style>
 <div class="transprantBackground">
     @*<p class="page_title">员工列表</p>*@
-    <div class="row">
-        <div class="col">
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AllUser[0].User_name)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AllUser[0].User_account)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AllUser[0].User_type)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AllUser[0].User_email)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AllUser[0].User_department)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AllUser[0].Reg_date)
-                        </th>
-                        <th>
-                            @Html.DisplayNameFor(model => model.AllUser[0].Last_login)
-                        </th>
+    <div class="main_div">
+        <div class="row">
+            <div class="col">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AllUser[0].User_name)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AllUser[0].User_account)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AllUser[0].User_type)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AllUser[0].User_email)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AllUser[0].User_department)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AllUser[0].Reg_date)
+                            </th>
+                            <th>
+                                @Html.DisplayNameFor(model => model.AllUser[0].Last_login)
+                            </th>
 
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var item in Model.AllUser) {
-                    <tr>
-                        <td>
-                            <a href="@com.redmine.gorilla.Globals.UserURL/@item.Id" target="_blank">    @Html.DisplayFor(modelItem => item.User_name)</a>
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.User_account)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.User_type)
-                        </td>
-                        <td>
-                            @Html.DisplayFor(modelItem => item.User_email)
-                        </td>
-                        <td>
-                            @Html.Raw(item.User_department)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Reg_date)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Last_login)
-                    </td>
-                    <td align="right">
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-success dropdown-toggle btn-xs"
-                                    data-toggle="dropdown">
-                                操作
-                            </button>
-                            <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
-                                @*<li role="presentation">
-                                    @Html.Raw(item.Id)
-                                </li>
-                                <li role="presentation" class="divider"></li>*@
-                                <li role="presentation">
-                                    <a href="@com.redmine.gorilla.Globals.UserURL/@item.Id" target="_blank">查看&lt; @item.User_name &gt;详细信息</a>
-                                </li>
-                                @*<li role="presentation">
-                    <a asp-page="./Delete" asp-route-id="@item.Id">提取升级包</a>
-                </li>*@
-                            </ul>
-                        </div>
-                    </td>
-                    </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-        <div class="col-3">
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model.AllUser) {
+                            <tr>
+                                <td>
+                                    <a href="@com.redmine.gorilla.Globals.UserURL/@item.Id" target="_blank">    @Html.DisplayFor(modelItem => item.User_name)</a>
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User_account)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User_type)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.User_email)
+                                </td>
+                                <td>
+                                    @Html.Raw(item.User_department)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Reg_date)
+                                </td>
+                                <td>
+                                    @Html.DisplayFor(modelItem => item.Last_login)
+                                </td>
+                                <td align="right">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-success dropdown-toggle btn-xs"
+                                                data-toggle="dropdown">
+                                            操作
+                                        </button>
+                                        <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                                            @*<li role="presentation">
+                                                @Html.Raw(item.Id)
+                                            </li>
+                                            <li role="presentation" class="divider"></li>*@
+                                            <li role="presentation">
+                                                <a href="@com.redmine.gorilla.Globals.UserURL/@item.Id" target="_blank">查看&lt; @item.User_name &gt;详细信息</a>
+                                            </li>
+                                            @*<li role="presentation">
+                                                <a asp-page="./Delete" asp-route-id="@item.Id">提取升级包</a>
+                                            </li>*@
+                                        </ul>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-3">
+            </div>
         </div>
     </div>

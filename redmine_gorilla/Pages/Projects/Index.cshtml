@@ -5,163 +5,176 @@
     ViewData["Title"] = "Index";
 }
 @*<h1 class="text-shadow"><label id="htmlTip1" style="font-weight:normal;"></label><a class="text-white" asp-area="" asp-page="/Index">主页</a> / 项目列表</h1>*@
-
+<style>
+    .main_div {
+        height: 600px;
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+</style>
 <div class="transprantBackground">
-    <form id="searchForm" method="get">
-        <table width="100%">
-            <tr>
-                <td style="width:500px;">
-                    <div class="input-group" style="width:400px">
-                        <input type="text" id="searchKey" class="form-control" placeholder="输入项目名称或简称" autocomplete="off" asp-for="SearchProjectName">
-                        <span class="input-group-btn">
-                            <button class="btn btn-primary" type="submit">查询</button>
-                            <button class="btn btn-default" type="button" onclick="SearchAll();">所有项目</button>
-                            @*<button class="btn btn-warning" type="button" onclick="window.history.go(-1); return false;">返回</button>*@
-                        </span>
-                    </div>
-                </td>
-                <td>&nbsp;</td>
-            </tr>
-        </table>
-        <table class="table table-hover table-condensed">
-            <thead>
-                <tr>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Projects[0].Project_name)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Projects[0].Project_area)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Projects[0].Project_provnce)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Projects[0].Project_progress)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Projects[0].Project_howto)
-                    </th>
-                    <th>
-                        @Html.DisplayNameFor(model => model.Projects[0].Project_employee)
-                    </th>
-                    @*<th>
-            @Html.DisplayNameFor(model => model.Project[0].Address)
-        </th>*@
-                    <th>
-                        @Html.DisplayNameFor(model => model.Projects[0].Project_type)
-                    </th>
-                    <th style="width:33px;"></th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.Projects) {
-                <tr>
-                    <td>
-                        <a href="http://server.logichealth.cn:9001/projects/gorilla/issues?f[]=cf_22&op[cf_22]==&set_filter=1&v[cf_22][]=@item.ID" target="_blank">@Html.DisplayFor(modelItem => item.Project_name)</a>
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Project_area)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Project_provnce)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Project_progress)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Project_howto)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Project_employee)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Project_type)
-                    </td>
-                    <td align="right">
-                        <div class="dropdown">
-                            <button type="button" class="btn btn-primary dropdown-toggle btn-xs"
-                                    data-toggle="dropdown">
-                                操作
-                            </button>
-                            <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
-                                <li role="presentation">
-                                    <a href="http://server.logichealth.cn:9001/projects/gorilla/issues?f[]=cf_22&op[cf_22]==&set_filter=1&v[cf_22][]=@item.ID" target="_blank">查看本院需求</a>
-                                </li>
-                                @*<li role="presentation">
-                                    <a href="#new">登记需求</a>
-                                </li>*@
-                                <li role="presentation" class="divider"></li>
-                                <li role="presentation">
-                                    <a href="@com.redmine.gorilla.Globals.UserURL/@item.ID" target="_blank">查看项目</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
-        <table>
-            <tr>
-                <td>
-                    <div class="input-group" style="padding-bottom:7px;">
-                        <span class="input-group-addon input-group-sm">共 @Model.RecordCount 条记录，每页显示</span>
-                        <input type="text" class="form-control" asp-for="PageSize" style="width:100px;">
-                        <span class="input-group-addon">条记录</span>
-                    </div>
-                </td>
-                <td style="padding-left:13px;">
-                    <ul class="pagination" style="margin:0px;">
-                        <li><a href="#FirstPage" onclick="NaviToPage(1);">第一页</a></li>
-                        @*<li class="active"><a href="#">1</a></li>
-                            <li class="disabled"><a href="#">2</a></li>*@
-
-                        @for (int naviPageIndex = 1; naviPageIndex <= Model.PageCount; naviPageIndex++) {
-                            string className = "";
-                            if (naviPageIndex == Model.PageIndex) {
-                                className = "class=\"active\"";
+    <div class="main_div">
+        <div class="row">
+            <div class="col">
+                <form id="searchForm" method="get">
+                    <table width="100%">
+                        <tr>
+                            <td style="width:500px;">
+                                <div class="input-group" style="width:400px">
+                                    <input type="text" id="searchKey" class="form-control" placeholder="输入项目名称或简称" autocomplete="off" asp-for="SearchProjectName">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-primary" type="submit">查询</button>
+                                        <button class="btn btn-default" type="button" onclick="SearchAll();">所有项目</button>
+                                        @*<button class="btn btn-warning" type="button" onclick="window.history.go(-1); return false;">返回</button>*@
+                                    </span>
+                                </div>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                    </table>
+                    <table class="table table-hover table-condensed">
+                        <thead>
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Projects[0].Project_name)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Projects[0].Project_area)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Projects[0].Project_provnce)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Projects[0].Project_progress)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Projects[0].Project_howto)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Projects[0].Project_employee)
+                                </th>
+                                @*<th>
+                                @Html.DisplayNameFor(model => model.Project[0].Address)
+                            </th>*@
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Projects[0].Project_type)
+                                </th>
+                                <th style="width:33px;"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model.Projects) {
+                                <tr>
+                                    <td>
+                                        <a href="http://server.logichealth.cn:9000/projects/gorilla/issues?f[]=cf_22&op[cf_22]==&set_filter=1&v[cf_22][]=@item.ID" target="_blank">@Html.DisplayFor(modelItem => item.Project_name)</a>
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Project_area)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Project_provnce)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Project_progress)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Project_howto)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Project_employee)
+                                    </td>
+                                    <td>
+                                        @Html.DisplayFor(modelItem => item.Project_type)
+                                    </td>
+                                    <td align="right">
+                                        <div class="dropdown">
+                                            <button type="button" class="btn btn-primary dropdown-toggle btn-xs"
+                                                    data-toggle="dropdown">
+                                                操作
+                                            </button>
+                                            <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dropdownMenu1">
+                                                <li role="presentation">
+                                                    <a href="http://server.logichealth.cn:9000/projects/gorilla/issues?f[]=cf_22&op[cf_22]==&set_filter=1&v[cf_22][]=@item.ID" target="_blank">查看本院需求</a>
+                                                </li>
+                                                @*<li role="presentation">
+                                                <a href="#new">登记需求</a>
+                                            </li>*@
+                                                <li role="presentation" class="divider"></li>
+                                                <li role="presentation">
+                                                    <a href="@com.redmine.gorilla.Globals.UserURL/@item.ID" target="_blank">查看项目</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
                             }
-                            <li @Html.Raw(className)><a href="#Page @naviPageIndex" onclick="NaviToPage(@naviPageIndex);">@naviPageIndex</a></li>
-                        }
-                        <li><a href="#LastPage" onclick="NaviToPage(@Model.PageCount);">最后一页</a></li>
-                    </ul>
-                </td>
-                <td>
-                </td>
-            </tr>
-        </table>
-        <input id="htmlPageIndex" type="hidden" asp-for="PageIndex" />
-        <input id="htmlSearchProvince" type="hidden" asp-for="SearchProvince" />
-        <input id="htmlSearchProgress" type="hidden" asp-for="SearchProgress" />
-    </form>
-    <input id="htmlTip" type="hidden" asp-for="HtmlTip" />
-    <br />
-</div>
-<script>
-    function NaviToPage(pageIndex) {
-        $("#htmlPageIndex").val(pageIndex);
-        $("#searchForm").submit();
-    }
-    function SearchProvince(province_name) {
-        $("#htmlPageIndex").val(1);
-        $("#htmlSearchProvince").val(province_name);
-        $("#searchForm").submit();
-    }
-    function SearchProgress(progress_name) {
-        $("#htmlPageIndex").val(1);
-        $("#htmlSearchProgress").val(progress_name);
-        $("#searchForm").submit();
-    }
-    function SearchAll() {
-        $("#htmlPageIndex").val(1);
-        $("#searchKey").val('');
-        $("#htmlSearchProgress").val('');
-        $("#htmlSearchProvince").val('');
-        $("#searchForm").submit();
-    }
-    function SyncProjectTip() {
-        var temp = $("#htmlTip").val();
-        $("#htmlTip1").text(temp);
-    }
-    onload = SyncProjectTip;
-</script>
+                        </tbody>
+                    </table>
+                    <table>
+                        <tr>
+                            <td>
+                                <div class="input-group" style="padding-bottom:7px;">
+                                    <span class="input-group-addon input-group-sm">共 @Model.RecordCount 条记录，每页显示</span>
+                                    <input type="text" class="form-control" asp-for="PageSize" style="width:100px;">
+                                    <span class="input-group-addon">条记录</span>
+                                </div>
+                            </td>
+                            <td style="padding-left:13px;">
+                                <ul class="pagination" style="margin:0px;">
+                                    <li><a href="#FirstPage" onclick="NaviToPage(1);">第一页</a></li>
+                                    @*<li class="active"><a href="#">1</a></li>
+                                <li class="disabled"><a href="#">2</a></li>*@
+
+                                    @for (int naviPageIndex = 1; naviPageIndex <= Model.PageCount; naviPageIndex++) {
+                                        string className = "";
+                                        if (naviPageIndex == Model.PageIndex) {
+                                            className = "class=\"active\"";
+                                        }
+                                        <li @Html.Raw(className)><a href="#Page @naviPageIndex" onclick="NaviToPage(@naviPageIndex);">@naviPageIndex</a></li>
+                                    }
+                                    <li><a href="#LastPage" onclick="NaviToPage(@Model.PageCount);">最后一页</a></li>
+                                </ul>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                    <input id="htmlPageIndex" type="hidden" asp-for="PageIndex" />
+                    <input id="htmlSearchProvince" type="hidden" asp-for="SearchProvince" />
+                    <input id="htmlSearchProgress" type="hidden" asp-for="SearchProgress" />
+                </form>
+            </div>
+            <div class="col-3">
+            </div>
+            <input id="htmlTip" type="hidden" asp-for="HtmlTip" />
+            <br />
+        </div>
+        </div>
+        <script>
+            function NaviToPage(pageIndex) {
+                $("#htmlPageIndex").val(pageIndex);
+                $("#searchForm").submit();
+            }
+            function SearchProvince(province_name) {
+                $("#htmlPageIndex").val(1);
+                $("#htmlSearchProvince").val(province_name);
+                $("#searchForm").submit();
+            }
+            function SearchProgress(progress_name) {
+                $("#htmlPageIndex").val(1);
+                $("#htmlSearchProgress").val(progress_name);
+                $("#searchForm").submit();
+            }
+            function SearchAll() {
+                $("#htmlPageIndex").val(1);
+                $("#searchKey").val('');
+                $("#htmlSearchProgress").val('');
+                $("#htmlSearchProvince").val('');
+                $("#searchForm").submit();
+            }
+            function SyncProjectTip() {
+                var temp = $("#htmlTip").val();
+                $("#htmlTip1").text(temp);
+            }
+            onload = SyncProjectTip;
+        </script>

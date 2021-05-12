@@ -22,6 +22,9 @@ namespace com.redmine.gorilla {
             services.AddAntiforgery(options => {
                 options.SuppressXFrameOptionsHeader = true;
             });
+            services.AddCors(options => {
+                options.AddPolicy("issues", builder => builder.WithOrigins("http://server.logichealth.cn").AllowAnyOrigin().WithMethods("GET"));
+            });
 
             //services.AddDbContext<MovieContext>(options =>
             //        options.UseSqlServer(Configuration.GetConnectionString("MsSql")));
@@ -51,7 +54,7 @@ namespace com.redmine.gorilla {
             app.UseAuthorization();
             app.UseSwagger();
             app.UseSwaggerUI(x => { x.SwaggerEndpoint("/swagger/v1/swagger.json", "CSSD"); });
-
+            app.UseCors("issues");
             app.UseEndpoints(endpoints => {
                 endpoints.MapRazorPages();
             });

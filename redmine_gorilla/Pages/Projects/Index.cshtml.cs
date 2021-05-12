@@ -12,14 +12,14 @@ namespace com.redmine.gorilla.Pages.Projects {
         public IList<Project> Projects { get; set; }
 
         public async Task<IActionResult> OnGet() {
-            _CrumbList.Add(new CrumbItem("项目列表",true,true));
+            _CrumbList.Add(new CrumbItem("医院项目列表",true,true));
             ViewData["CrumbList"] = _CrumbList;
 
-            User user = HttpContext.Session.Get<User>(SessionExtensions.SessionKey_CUA);
-            if (user == null) {
-                return RedirectToPage("Login");
-            }
-
+            //User user = HttpContext.Session.Get<User>(SessionExtensions.SessionKey_CUA);
+            //if (user == null) {
+            //    return RedirectToPage("Login");
+            //}
+            int nCount = Globals.AllUser.Count;
             SessionExtensions.Set<string>(HttpContext.Session, SessionExtensions.SessionKey_ActiveMenuId, "naviMenu_Project");
             Projects = Globals.AllProject;
 

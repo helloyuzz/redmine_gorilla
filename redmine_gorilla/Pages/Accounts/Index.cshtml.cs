@@ -9,7 +9,7 @@ namespace com.redmine.gorilla.Pages.Accounts {
 
         public async Task OnGetAsync() {
             _CrumbList.Add(new CrumbItem("日志审计"));
-            _CrumbList.Add(new CrumbItem("升级包提取"));
+            //_CrumbList.Add(new CrumbItem("升级包提取"));
             //Account = await _context.Account.ToListAsync();
         }
     }

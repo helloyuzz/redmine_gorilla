@@ -21,7 +21,7 @@ namespace com.redmine.gorilla.Pages {
                 return RedirectToPage("Login");
             }
             SessionExtensions.Set<string>(HttpContext.Session, SessionExtensions.SessionKey_ActiveMenuId, "navMenu_Index");
-            return Page();
+            return RedirectToPage("/Progresses/Index");// Page();
             //if (Globals.Cua == null) {
         }
     }

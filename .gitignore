@@ -62,3 +62,14 @@ build-iPhoneSimulator/
 .vs/
 redmine_gorilla/bin
 redmine_gorilla/obj
+.svn/wc.db
+redmine_gorilla/bin/Release/netcoreapp3.1/com.redmine.gorilla.Views.pdb
+redmine_gorilla/bin/Release/netcoreapp3.1/com.redmine.gorilla.Views.dll
+redmine_gorilla/bin/Release/netcoreapp3.1/com.redmine.gorilla.pdb
+redmine_gorilla/bin/Release/netcoreapp3.1/com.redmine.gorilla.dll
+redmine_gorilla/bin/Release/netcoreapp3.1/appsettings.json
+redmine_gorilla/bin/Debug/netcoreapp3.1/com.redmine.gorilla.Views.pdb
+redmine_gorilla/bin/Debug/netcoreapp3.1/com.redmine.gorilla.Views.dll
+redmine_gorilla/bin/Debug/netcoreapp3.1/com.redmine.gorilla.pdb
+redmine_gorilla/bin/Debug/netcoreapp3.1/com.redmine.gorilla.dll
+redmine_gorilla/bin/Debug/netcoreapp3.1/appsettings.json

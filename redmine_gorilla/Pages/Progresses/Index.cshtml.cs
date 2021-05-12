@@ -16,14 +16,15 @@ namespace com.redmine.gorilla.Pages.Progresses {
         public IList<ProjectVersion> AllVersion { get; set; }
 
         public async Task<IActionResult> OnGetAsync() {
-            _CrumbList.Add(new CrumbItem("当前项目进度"));
+            _CrumbList.Add(new CrumbItem("研发计划查询"));
             AllVersion = new List<ProjectVersion>();
 
-            User user = SessionExtensions.Get<User>(HttpContext.Session, SessionExtensions.SessionKey_CUA);
-            if (user == null) {
-                return RedirectToPage("Login");
-            }
-            RedmineManager manager = new RedmineManager(Globals.RedmineURL, user.User_account, user.User_password, MimeFormat.Json);
+            //User user = SessionExtensions.Get<User>(HttpContext.Session, SessionExtensions.SessionKey_CUA);
+            //if (user == null) {
+            //    return RedirectToPage("Login");
+            //}
+            //RedmineManager manager = new RedmineManager(Globals.RedmineURL, user.User_account, user.User_password, MimeFormat.Json);
+            RedmineManager manager = new RedmineManager(Globals.RedmineURL, Globals.APIKey,MimeFormat.Json);
             try {
                 var getCondition = new NameValueCollection { { RedmineKeys.PROJECT_ID, "4" },{ RedmineKeys.INCLUDE, RedmineKeys.RELATIONS }, { RedmineKeys.INCLUDE, RedmineKeys.USER } };
                 var allVersion = manager.GetObjects<Redmine.Net.Api.Types.Version>(getCondition);
@@ -33,6 +34,7 @@ namespace com.redmine.gorilla.Pages.Progresses {
                     temp.Version = item.Name;
                     temp.Name1 = item.Name;
                     temp.Id = item.Id;
+                    temp.Desc = item.Description;
                     if (item.DueDate != null) {
                         temp.PlanComplete = item.DueDate.Value.ToString("yyyy-MM-dd");
                     } else {
@@ -51,6 +53,9 @@ namespace com.redmine.gorilla.Pages.Progresses {
                                     case "参与评审人员":
                                         int userid = int.Parse(tempValue.Info);
                                         User getUser = Globals.AllUser.FirstOrDefault(t => t.Id == userid);
+                                        if (getUser == null) {
+                                            continue;
+                                        }
 
                                         if (customItem.Name.Equals("需求来源") && string.IsNullOrEmpty(customValue)==false) {
                                             customValue +=  "<br>";
